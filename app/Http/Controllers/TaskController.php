@@ -22,12 +22,16 @@ class TaskController extends Controller
     public function store(Request $request) {  // metode store() dalam Laravel yang digunakan untuk menangani penyimpanan data yang dikirim dari formulir.
         $request->validate([
             'name' => 'required|max:100',
-            'list_id' => 'required'
+            'list_id' => 'required',
+            'description' => 'nullable|max:100',
+            'priority' => 'required|in:high,medium,low'
         ]);
 
         Task::create([  //digunakan untuk menyimpan data ke dalam database menggunakan Eloquent ORM
             'name' => $request->name,
-            'list_id' => $request->list_id
+            'list_id' => $request->list_id,
+            'description' => $request->description,
+            'priority' => $request->priority
         ]);
 
 
@@ -46,5 +50,14 @@ class TaskController extends Controller
         Task::findOrFail($id)->delete();
 
         return redirect()->back();
+    }
+    public function show($id) {
+        $task = Task::findOrfail($id); 
+
+        $data = [
+            'title' => 'Details',
+            'task' => $task,
+        ];
+        return view('pages.details', $data);
     }
 }
