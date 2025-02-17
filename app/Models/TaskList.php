@@ -23,6 +23,6 @@ class TaskList extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tasks() {
-        return $this->hasMany(Task::class, 'list_id');
+        return $this->hasMany(Task::class, 'list_id');  // Relasi one-to-many dengan Task
     }
 }
