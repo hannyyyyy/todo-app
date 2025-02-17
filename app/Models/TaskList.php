@@ -13,7 +13,7 @@ class TaskList extends Model
     protected $guarded = [
         'id',           // ID daftar tugas (auto-increment)
         'created_at',   // Waktu pembuatan daftar tugas (timestamp)
-        'updated_at'
+        'updated_at'    // Waktu pembaruan terakhir daftar tugas (timestamp)
     ];
 
     public function tasks() {
