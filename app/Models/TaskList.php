@@ -16,6 +16,12 @@ class TaskList extends Model
         'updated_at'    // Waktu pembaruan terakhir daftar tugas (timestamp)
     ];
 
+    /**
+     * Relasi dengan model Task.
+     * Satu daftar tugas (TaskList) dapat memiliki banyak tugas (Task).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function tasks() {
         return $this->hasMany(Task::class, 'list_id');
     }
