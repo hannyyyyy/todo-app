@@ -23,7 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',      // Nama pengguna
         'email',     // Email pengguna (unik)
-        'password',  
+        'password',  // Kata sandi pengguna
     ];
 
     /**
