@@ -34,11 +34,12 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',         // Menyembunyikan password dari output JSON
-        'remember_token',
+        'remember_token',   // Token untuk fitur "remember me" saat login
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Mengembalikan daftar atribut yang harus dikonversi ke tipe data tertentu.
+     * Digunakan untuk memastikan bahwa atribut memiliki format yang benar.
      *
      * @return array<string, string>
      */
