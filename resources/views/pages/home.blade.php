@@ -25,18 +25,6 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
-    /* ====== Tombol dengan Bootstrap Gradient & Hover ====== */
-    .btn-gradient {
-        background: linear-gradient(135deg, #ff7eb3, #ff758c);
-       /* Membuat warna latar belakang tombol berupa gradasi dari warna pink cerah (#ff7eb3) ke pink gelap (#ff758c) dengan sudut 135 derajat.*/
-        color: white;
-      /*  Mengatur teks tombol menjadi warna putih agar kontras dengan latar belakang gradient.*/
-        font-weight: bold;
-        font-weight: bold;
-        /* Membuat teks di dalam tombol menjadi lebih tebal.*/
-        transition: transform 0.3s ease-in-out;
-    }
-
     .btn-gradient:hover {
         transform: scale(1.1);
        
