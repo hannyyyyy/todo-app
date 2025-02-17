@@ -33,7 +33,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
+        'password',         // Menyembunyikan password dari output JSON
         'remember_token',
     ];
 
