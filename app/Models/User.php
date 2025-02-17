@@ -46,8 +46,8 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime', 
-            'password' => 'hashed',
+            'email_verified_at' => 'datetime', // Mengubah nilai ke format DateTime saat diambil dari database
+            'password' => 'hashed',  // Menggunakan hashing untuk menyimpan password dengan aman
         ];
     }
 }
