@@ -21,18 +21,18 @@ class Task extends Model
         'updated_at'
     ];
 
-    const PRIORITIES = [      //const sebuah nilai yang tidak bisa diubah
+    const PRIORITIES = [      
         'low',
         'medium',
         'high'
     ];
 
-    public function getPriorityClassAttribute() {  //untuk mendapatkan sebuah prioritas yang nantinya setiap prioritas akan  diberikan warna sesuai warna 
+    public function getPriorityClassAttribute() {  
         return match($this->attributes['priority']) {
-            'low' => 'success',      //warna hijau
-            'medium' => 'warning',   //warna kuning
-            'high' => 'danger',      //warna merah 
-            default => 'secondary'   // jika kita tidak memilih salah satu maka yang muncul warna abu / warna bawaan
+            'low' => 'success',      
+            'medium' => 'warning',   
+            'high' => 'danger',       
+            default => 'secondary' 
         };
     }
 

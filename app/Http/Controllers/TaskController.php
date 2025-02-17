@@ -39,25 +39,72 @@ class TaskController extends Controller
     }
 
     public function complete($id) {
+        // Mencari task berdasarkan ID, jika tidak ditemukan akan menghasilkan error 404
+        // Lalu memperbarui status tugas menjadi selesai (is_completed = true)
         Task::findOrFail($id)->update([
             'is_completed' => true
         ]);
-
+    
+        // Mengembalikan pengguna ke halaman sebelumnya setelah status diperbarui
         return redirect()->back();
     }
-
+    
     public function destroy($id) {
+        // Mencari dan menghapus task berdasarkan ID, jika tidak ditemukan akan menghasilkan error 404
         Task::findOrFail($id)->delete();
-
-        return redirect()->back();
+    
+        // Setelah berhasil dihapus, pengguna akan diarahkan ke halaman home
+        return redirect()->route('home');
     }
-    public function show($id) {
-        $task = Task::findOrfail($id); 
-
+    
+    public function show($id)
+    {
+        // Mengambil task berdasarkan ID dan semua daftar task lists untuk ditampilkan di halaman detail
         $data = [
-            'title' => 'Details',
-            'task' => $task,
+            'title' => 'Task', // Judul halaman
+            'lists' => TaskList::all(), // Mengambil semua daftar tugas
+            'task' => Task::findOrFail($id), // Mengambil task berdasarkan ID, jika tidak ditemukan akan error 404
         ];
+    
+        // Menampilkan halaman detail tugas dengan data yang telah diambil
         return view('pages.details', $data);
     }
-}
+    
+    public function changeList(Request $request, Task $task)
+    {
+        // Validasi input, memastikan bahwa list_id yang diberikan ada di tabel task_lists
+        $request->validate([
+            'list_id' => 'required|exists:task_lists,id',
+        ]);
+    
+        // Memperbarui list_id dari task agar dipindahkan ke daftar tugas lain
+        Task::findOrFail($task->id)->update([
+            'list_id' => $request->list_id
+        ]);
+    
+        // Mengembalikan pengguna ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('success', 'List berhasil diperbarui!');
+    }
+    
+    public function update(Request $request, Task $task)
+    {
+        // Validasi input untuk memastikan data yang dimasukkan valid
+        $request->validate([
+            'list_id' => 'required', // list_id harus ada dan valid
+            'name' => 'required|max:100', // Nama tugas wajib diisi dan maksimal 100 karakter
+            'description' => 'max:255', // Deskripsi bersifat opsional, tetapi maksimal 255 karakter
+            'priority' => 'required|in:low,medium,high' // Prioritas hanya boleh berisi low, medium, atau high
+        ]);
+    
+        // Memperbarui task dengan data baru yang diberikan oleh pengguna
+        Task::findOrFail($task->id)->update([
+            'list_id' => $request->list_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'priority' => $request->priority
+        ]);
+    
+        // Mengembalikan pengguna ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('success', 'Task berhasil diperbarui!');
+    }
+}   
