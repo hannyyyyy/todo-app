@@ -27,7 +27,8 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Atribut yang harus disembunyikan saat model dikonversi menjadi array atau JSON.
+     * Hal ini mencegah kebocoran informasi sensitif.
      *
      * @var list<string>
      */
