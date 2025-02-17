@@ -11,7 +11,7 @@ class TaskList extends Model
 
     // Menentukan atribut yang tidak boleh diisi secara massal
     protected $guarded = [
-        'id',
+        'id',           // ID daftar tugas (auto-increment)
         'created_at',
         'updated_at'
     ];
