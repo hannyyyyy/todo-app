@@ -4,7 +4,7 @@
     <div id="content" class="container">
         <!-- Tombol Kembali -->
         <div class="d-flex align-items-center mb-3">
-            <a href="{{ route('home') }}" class="btn btn-sm text-warning">
+            <a href="{{ route('home') }}" class="btn btn-sm text-danger-subtle">
                 <i class="bi bi-arrow-left-short fs-4"></i>
                 <span class="fw-bold fs-5">Kembali</span>
             </a>
@@ -21,8 +21,8 @@
         <div class="row my-3">
             <div class="col-12 col-md-8 mb-3">
                 <!-- Kartu Detail Tugas -->
-                <div class="card shadow-sm border-warning">
-                    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                <div class="card shadow-sm border-danger-subtle">
+                    <div class="card-header bg-danger-subtle text-dark d-flex justify-content-between align-items-center">
                         <h5 class="text-truncate" style="width: 70%">{{ $task->name }} <small class="fs-6">di {{ $task->list->name }}</small></h5>
                         <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal">
                             <i class="bi bi-pencil-square"></i> Edit
@@ -36,7 +36,7 @@
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-outline-warning w-100 btn-sm">
+                            <button type="submit" class="btn btn-outline-danger-subtle w-100 btn-sm">
                                 Hapus
                             </button>
                         </form>
@@ -46,8 +46,8 @@
 
             <div class="col-12 col-md-4 mb-3">
                 <!-- Kartu Detail Tambahan -->
-                <div class="card shadow-sm border-warning">
-                    <div class="card-header bg-warning text-dark">
+                <div class="card shadow-sm border-danger-subtle">
+                    <div class="card-header bg-danger-subtle text-dark">
                         <h5>Details</h5>
                     </div>
                     <div class="card-body">
@@ -79,7 +79,7 @@
                 <form action="{{ route('tasks.update', $task->id) }}" method="POST" class="modal-content">
                     @method('PUT')
                     @csrf
-                    <div class="modal-header bg-warning text-dark">
+                    <div class="modal-header bg-danger-subtle text-dark">
                         <h5 class="modal-title" id="editTaskModalLabel">Edit Task</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>

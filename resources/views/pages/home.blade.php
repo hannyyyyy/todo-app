@@ -83,14 +83,14 @@
 <div id="content" class=" min-vh-100 d-flex flex-column align-items-center py-4"> 
     <h1 class="text-danger-subtle fw-bold">JADWAL LATIHAN</h1>
 
-    <div class="d-flex align-items-center justify-content-start mb-3 text-start w-100">
-    <a href="{{ route('about') }}" class="nav-link d-flex align-items-center">
-        <img class="rounded-circle me-2" src="images/hanny2.jpeg" alt=""
-            style="width: 40px; height: 40px" />
-        <span class="d-none d-lg-inline-flex">ABOUT ME :> </span>
-    </a>
-</div>
-
+    <div class="d-flex align-items-center justify-content-start mb-3 gap-2 w-100">
+        <a href="{{ route('about') }}" class="nav-link d-flex align-items-center">
+            <img class="rounded-circle me-2" src="{{ asset('images/ha.jpeg') }}" alt=""
+                style="width: 40px; height: 40px" />
+            <span class="fw-bold">click aja best :></span>
+        </a>
+    </div>
+    
 {{-- div -> digunakan untuk membungkus suatu isi konten --}}
 <div id="content" class="overflow-y-hidden overflow-x-hidden bg-danger-subtle d-flex justify-content-center align-items-center">
     <!-- Cek apakah tidak ada list yang tersedia -->
