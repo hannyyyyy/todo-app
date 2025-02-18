@@ -178,7 +178,7 @@
                         </span>
                     </button>
                 </div>
-                <div class="card-footer d-flex justify-content-between align-items-center">
+                <div class="card-footer d-flex  align-items-center">
                     <!-- Menampilkan jumlah tugas yang ada di list -->
                     <p class="card-text">{{ $list->tasks->count() }} Tugas</p>
                 </div>

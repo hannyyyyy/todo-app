@@ -88,6 +88,12 @@
     </style>
 </head>
 <body>
+    <div class="d-flex align-items-center mb-3">
+        <a href="{{ route('home') }}" class="btn btn-sm text-danger-subtle">
+            <i class="bi bi-arrow-left-short fs-4"></i>
+            <span class="fw-bold fs-5">Kembali</span>
+        </a>
+    </div>
     <div class="container my-5 d-flex justify-content-center">
         <div class="profile-card">
             <!-- Foto Profil -->
