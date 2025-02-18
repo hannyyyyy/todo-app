@@ -7,7 +7,7 @@
             @csrf <!-- Laravel menambahkan token CSRF secara otomatis untuk perlindungan keamanan -->
             
             <!-- Header Modal -->
-            <div class="modal-header bg-danger-subtle">
+            <div class="modal-header bg-danger-subtle text-secondary">
                 <h1 class="modal-title fs-5" id="addListModalLabel">Tambah List</h1>
                 <!-- Tombol untuk menutup modal -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -42,7 +42,7 @@
             @csrf
 
             <!-- Header Modal -->
-            <div class="modal-header bg-danger-subtle">
+            <div class="modal-header bg-danger-subtle text-secondary">
                 <h1 class="modal-title fs-5" id="addTaskModalLabel">Tambah Task</h1>
                 <!-- Tombol untuk menutup modal -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
