@@ -14,7 +14,7 @@
             </div>
 
             <!-- Body Modal -->
-            <div class="modal-body bg-dark">
+            <div class="modal-body bg-secondary">
                 <!-- Input untuk nama list -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama</label>
@@ -49,7 +49,7 @@
             </div>
 
             <!-- Body Modal -->
-            <div class="modal-body bg-dark">
+            <div class="modal-body bg-secondary">
                 <!-- Menyembunyikan ID list (hidden) yang dikirim dengan form -->
                 <input type="text" id="taskListId" name="list_id" hidden>
 

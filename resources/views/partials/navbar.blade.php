@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark ">
+<nav class="navbar navbar-expand-lg bg-danger-subtle navbar-danger-subtle ">
     <div class="container d-flex justify-content-center">
         <a class="navbar-brand fw-bolder" href="#">{{ config('app.name') }}</a>
     </div>

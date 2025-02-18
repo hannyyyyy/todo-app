@@ -2,13 +2,13 @@
 
 @section('content')
 <style>
-    /* ====== Background Styling dengan Efek Paralaks ====== */
     #content {
-        background: url('{{ asset('images/background.jpg') }}') center/cover fixed no-repeat;
+        background: url('{{ asset('images/bg-hanny.jpg') }}') center/cover fixed no-repeat;
         color: white;
         /*  Mengatur teks tombol menjadi warna putih agar kontras dengan latar belakang gradient.*/
         min-height: 100vh;
     }
+
 
     /* ====== Efek Glassmorphism pada Card ====== */
     .card {
@@ -24,6 +24,7 @@
         transform: scale(1.05);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
+
 
     .btn-gradient:hover {
         transform: scale(1.1);
@@ -80,7 +81,6 @@
     }
 </style>
 {{-- div -> digunakan untuk membungkus suatu isi konten --}}
-
 <div id="content" class="overflow-y-hidden overflow-x-hidden bg-danger-subtle">
     <!-- Cek apakah tidak ada list yang tersedia -->
     @if ($lists->count() == 0)
@@ -93,12 +93,20 @@
         </div>
     @endif
     
+    <div class="nav-item dropdown">
+        <a href="{{ route('about') }}" class="nav-link">
+            <img class="rounded-circle me-lg-2" src="hanny.jpeg" alt=""
+                style="width: 40px; height: 40px" />
+            <span class="d-none d-lg-inline-flex">ABOUT ME :> </span>
+        </a>
+    </div>
+
     <!-- Kontainer untuk menampilkan list dan tugas -->
     <div class="d-flex gap-3 px-3 flex-nowrap overflow-x-scroll overflow-y-hidden" style="height: 100vh;">
         <!-- Iterasi melalui setiap list yang ada -->
         @foreach ($lists as $list)
             <div class="card flex-shrink-0" style="width: 18rem; max-height: 80vh;">
-                <div class="card-header d-flex align-items-center justify-content-between bg-dark text-light">
+                <div class="card-header d-flex align-items-center justify-content-between bg-danger-subtle text-dark">
                     <h4 class="card-title">{{ $list->name }}</h4>
                     <!-- Form untuk menghapus list -->
                     <form action="{{ route('lists.destroy', $list->id) }}" method="POST" style="display: inline;">
@@ -149,7 +157,7 @@
                                         <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
                                             @csrf
                                             @method('PATCH') {{-- Menggunakan metode PATCH untuk update status selesai --}}
-                                            <button type="submit" class="btn btn-sm btn-dark w-100">
+                                            <button type="submit" class="btn btn-sm btn-secondary w-100">
                                                 <span class="d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-check fs-5"></i>
                                                     Selesai
@@ -162,7 +170,7 @@
                         @endif
                     @endforeach
                     <!-- Tombol untuk menambahkan tugas baru ke dalam list -->
-                    <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
                         data-bs-target="#addTaskModal" data-list="{{ $list->id }}">
                         <span class="d-flex align-items-center justify-content-center">
                             <i class="bi bi-plus fs-5"></i>
@@ -177,7 +185,7 @@
             </div>
         @endforeach
         <!-- Tombol untuk menambahkan list baru -->
-        <button type="button" class="btn btn-outline-dark flex-shrink-0" style="width: 18rem; height: fit-content;"
+        <button type="button" class="btn btn-outline-secondary flex-shrink-0" style="width: 18rem; height: fit-content;"
             data-bs-toggle="modal" data-bs-target="#addListModal">
             <span class="d-flex align-items-center justify-content-center">
                 <i class="bi bi-plus fs-5"></i>

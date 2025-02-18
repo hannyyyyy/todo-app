@@ -2,15 +2,15 @@
 
 @section('content')
     <div id="content" class="container">
-        <!-- Tombol Kembali ke Halaman Utama -->
-        <div class="d-flex align-items-center">
-            <a href="{{ route('home') }}" class="btn btn-sm">
+        <!-- Tombol Kembali -->
+        <div class="d-flex align-items-center mb-3">
+            <a href="{{ route('home') }}" class="btn btn-sm text-warning">
                 <i class="bi bi-arrow-left-short fs-4"></i>
                 <span class="fw-bold fs-5">Kembali</span>
             </a>
         </div>
 
-        <!-- Menampilkan Pesan Sukses Jika Ada -->
+        <!-- Pesan Sukses -->
         @session('success')
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -19,52 +19,43 @@
         @endsession
 
         <div class="row my-3">
-            <div class="col-8">
+            <div class="col-12 col-md-8 mb-3">
                 <!-- Kartu Detail Tugas -->
-                <div class="card" style="height: 80vh;">
-                    <div class="card-header d-flex align-items-center justify-content-between overflow-hidden">
-                        <h3 class="fw-bold fs-4 text-truncate mb-0" style="width: 80%">
-                            {{ $task->name }}
-                            <span class="fs-6 fw-medium">
-                                di {{ $task->list->name }}
-                            </span>
-                        </h3>
-                        <!-- Tombol Edit Task -->
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
-                            data-bs-target="#editTaskModal">
-                            <i class="bi bi-pencil-square"></i>
+                <div class="card shadow-sm border-warning">
+                    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                        <h5 class="text-truncate" style="width: 70%">{{ $task->name }} <small class="fs-6">di {{ $task->list->name }}</small></h5>
+                        <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal">
+                            <i class="bi bi-pencil-square"></i> Edit
                         </button>
                     </div>
                     <div class="card-body">
-                        <p>
-                            {{ $task->description }}
-                        </p>
+                        <p class="small">{{ $task->description }}</p>
                     </div>
                     <div class="card-footer">
                         <!-- Form Hapus Task -->
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger w-100">
+                            <button type="submit" class="btn btn-outline-warning w-100 btn-sm">
                                 Hapus
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-4">
+
+            <div class="col-12 col-md-4 mb-3">
                 <!-- Kartu Detail Tambahan -->
-                <div class="card" style="height: 80vh;">
-                    <div class="card-header d-flex align-items-center justify-content-between overflow-hidden">
-                        <h3 class="fw-bold fs-4 text-truncate mb-0" style="width: 80%">Details</h3>
+                <div class="card shadow-sm border-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <h5>Details</h5>
                     </div>
-                    <div class="card-body d-flex flex-column gap-2">
+                    <div class="card-body">
                         <!-- Form Untuk Mengubah List dari Task -->
-                        <form action="{{ route('tasks.changeList', $task->id) }}" method="POST">
+                        <form action="{{ route('tasks.changeList', $task->id) }}" method="POST" class="mb-2">
                             @csrf
                             @method('PATCH')
-                            <select class="form-select" name="list_id" onchange="this.form.submit()">
+                            <select class="form-select form-select-sm" name="list_id" onchange="this.form.submit()">
                                 @foreach ($lists as $list)
                                     <option value="{{ $list->id }}" {{ $list->id == $task->list_id ? 'selected' : '' }}>
                                         {{ $list->name }}
@@ -73,12 +64,9 @@
                             </select>
                         </form>
 
-                        <!-- Menampilkan Prioritas Task -->
-                        <h6 class="fs-6">
-                            Prioritas:
-                            <span class="badge text-bg-{{ $task->priorityClass }} badge-pill" style="width: fit-content">
-                                {{ $task->priority }}
-                            </span>
+                        <!-- Prioritas Task -->
+                        <h6 class="fs-6">Prioritas:
+                            <span class="badge text-bg-{{ $task->priorityClass }} badge-pill">{{ $task->priority }}</span>
                         </h6>
                     </div>
                 </div>
@@ -91,41 +79,32 @@
                 <form action="{{ route('tasks.update', $task->id) }}" method="POST" class="modal-content">
                     @method('PUT')
                     @csrf
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editTaskModalLabel">Edit Task</h1>
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title" id="editTaskModalLabel">Edit Task</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <input type="text" value="{{ $task->list_id }}" name="list_id" hidden>
-                        
-                        <!-- Input Nama Task -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                value="{{ $task->name }}" placeholder="Masukkan nama list">
+                            <input type="text" class="form-control form-control-sm" id="name" name="name" value="{{ $task->name }}">
                         </div>
-
-                        <!-- Input Deskripsi Task -->
                         <div class="mb-3">
                             <label for="description" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Masukkan deskripsi">{{ $task->description }}</textarea>
+                            <textarea class="form-control form-control-sm" name="description" id="description" rows="3">{{ $task->description }}</textarea>
                         </div>
-
-                        <!-- Dropdown Prioritas Task -->
                         <div class="mb-3">
                             <label for="priority" class="form-label">Priority</label>
-                            <select class="form-control" name="priority" id="priority">
+                            <select class="form-control form-control-sm" name="priority" id="priority">
                                 <option value="low" @selected($task->priority == 'low')>Low</option>
                                 <option value="medium" @selected($task->priority == 'medium')>Medium</option>
                                 <option value="high" @selected($task->priority == 'high')>High</option>
                             </select>
                         </div>
                     </div>
-
-                    <!-- Tombol Modal -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                     </div>
                 </form>
             </div>
