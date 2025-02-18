@@ -1,14 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        #content {
-        background: url('{{ asset('images/bg-hanny2.jpg') }}') center/cover fixed no-repeat;
-        color: white;
-        /*  Mengatur teks tombol menjadi warna putih agar kontras dengan latar belakang gradient.*/
-        min-height: 100vh;
-    }
-    </style>
     <div id="content" class="container">
         <!-- Tombol Kembali -->
         <div class="d-flex align-items-center mb-3">
