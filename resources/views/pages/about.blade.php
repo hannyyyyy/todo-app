@@ -73,6 +73,26 @@
             transform: scale(1.1);
         }
 
+        /* Tombol Kembali */
+        .btn-back {
+            background-color: #ff66b3;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 30px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            background-color: #ff3385;
+            transform: scale(1.1);
+        }
+
         /* Animated sparkle effect */
         .sparkle {
             font-size: 1.5em;
@@ -88,12 +108,6 @@
     </style>
 </head>
 <body>
-    <div class="d-flex align-items-center mb-3">
-        <a href="{{ route('home') }}" class="btn btn-sm">
-            <i class="bi bi-arrow-left-short fs-4"></i>
-            <span class="fw-bold fs-5 text-danger-subtle ms-3">Kembali</span>
-        </a>
-    </div>
     <div class="container my-5 d-flex justify-content-center">
         <div class="profile-card">
             <!-- Foto Profil -->
@@ -108,6 +122,8 @@
             <a href="https://www.instagram.com/hannyyarsy?igsh=N3pkbzViYWp1YmFs" target="_blank" class="profile-btn">Follow Me on Instagram</a>
             <!-- Tombol GitHub -->
             <a href="https://github.com/hannyyyyy" target="_blank" class="profile-btn">GitHub</a>
+            <!-- Tombol Kembali -->
+            <a href="javascript:history.back()" class="btn-back">Kembali</a>
             <!-- Sparkle -->
             <div class="sparkle">✨</div>
         </div>
