@@ -95,7 +95,7 @@
     
     <div class="nav-item dropdown">
         <a href="{{ route('about') }}" class="nav-link">
-            <img class="rounded-circle me-lg-2" src="hanny.jpeg" alt=""
+            <img class="rounded-circle me-lg-2" src="images/hanny2.jpeg" alt=""
                 style="width: 40px; height: 40px" />
             <span class="d-none d-lg-inline-flex">ABOUT ME :> </span>
         </a>
