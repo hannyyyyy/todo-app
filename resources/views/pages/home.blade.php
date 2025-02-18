@@ -2,30 +2,31 @@
 
 @section('content')
 <style>
+    /* ====== Background dan Warna Konten ====== */
     #content {
-        background: url('{{ asset('images/bg-hanny.jpg') }}') center/cover fixed no-repeat;
+        background: url('{{ asset('images/bg-hanny.jpg') }}') center/cover fixed no-repeat; /* Menambahkan gambar latar belakang */
         color: white;
         min-height: 100vh;
     }
 
     /* ====== Efek Glassmorphism pada Card ====== */
     .card {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(8px);
+        background: rgba(255, 255, 255, 0.15); /* Memberikan efek kaca buram */
+        backdrop-filter: blur(8px); /* Efek blur di latar belakang */
         border-radius: 12px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi pada hover */
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Border tipis */
         margin-bottom: 1rem; /* Mengurangi jarak antar card */
     }
 
     .card:hover {
-        transform: scale(1.03);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1.03); /* Efek memperbesar card pada hover */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Memberikan bayangan pada hover */
     }
 
-    /* ====== Badge Bootstrap dengan Animasi ====== */
+    /* ====== Animasi pada Badge ====== */
     .badge-animated {
-        animation: bounce 1s infinite alternate;
+        animation: bounce 1s infinite alternate; /* Animasi bouncing untuk badge */
     }
 
     @keyframes bounce {
@@ -39,7 +40,7 @@
 
     /* ====== Tombol Tambah dengan Efek Pulse ====== */
     .btn-add {
-        background: linear-gradient(135deg, #42e695, #3bb2b8);
+        background: linear-gradient(135deg, #42e695, #3bb2b8); /* Efek gradasi pada tombol */
         color: white;
         width: 50px;
         height: 50px;
@@ -49,18 +50,18 @@
         justify-content: center;
         font-size: 1.2em;
         transition: all 0.3s ease-in-out;
-        animation: pulse 1.5s infinite;
+        animation: pulse 1.5s infinite; /* Efek pulse pada tombol */
         border: none;
     }
 
     .btn-add:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 12px rgba(66, 230, 149, 0.5);
+        transform: scale(1.1); /* Efek memperbesar tombol saat hover */
+        box-shadow: 0 0 12px rgba(66, 230, 149, 0.5); /* Bayangan saat hover */
     }
 
     @keyframes pulse {
         0% {
-            box-shadow: 0 0 8px rgba(66, 230, 149, 0.3);
+            box-shadow: 0 0 8px rgba(66, 230, 149, 0.3); /* Efek pulse pada tombol */
         }
         50% {
             box-shadow: 0 0 18px rgba(66, 230, 149, 0.6);
@@ -80,7 +81,7 @@
     }
 
     .btn-sm {
-        padding: 0.3rem 0.8rem;
+        padding: 0.3rem 0.8rem; /* Mengurangi padding pada tombol kecil */
     }
 
     .task-list-item {
@@ -252,6 +253,7 @@
 </div>
 
 <script>
+    // Fungsi pencarian berdasarkan nama atau deskripsi tugas
     document.getElementById('search-input').addEventListener('input', function (e) {
         const searchText = e.target.value.toLowerCase();
         const cards = document.querySelectorAll('.card');
@@ -260,6 +262,7 @@
             const taskName = card.querySelector('.card-title') ? card.querySelector('.card-title').textContent.toLowerCase() : '';
             const taskDescription = card.querySelector('.card-text') ? card.querySelector('.card-text').textContent.toLowerCase() : '';
 
+            // Menyembunyikan card jika tidak sesuai pencarian
             if (taskName.includes(searchText) || taskDescription.includes(searchText)) {
                 card.style.display = '';
             } else {
