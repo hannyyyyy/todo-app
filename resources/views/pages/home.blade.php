@@ -128,7 +128,7 @@
 
 <div id="content" class="min-vh-100 d-flex flex-column align-items-center py-3">
     <!-- Judul Halaman -->
-    <h1 class="text-danger-subtle fw-bold mb-4">JADWAL MINGGUAN</h1>
+    <h1 class="text-danger-subtle fw-bold mb-4">TUGAS MINGGUAN</h1>
 
     <!-- Fitur Pencarian -->
     <div class="search-container w-100 d-flex justify-content-center">
@@ -136,10 +136,10 @@
     </div>
 
     <!-- Fitur "Click for My Profile" -->
-    <div class="card p-1 w-100 mb-3">
+    <div class="card p-1 w-30 mb-3">
         <div class="d-flex align-items-center justify-content-start">
             <a href="{{ route('about') }}" class="nav-link d-flex align-items-center profile-link">
-                <span class="fw-bold">Click for my profile :></span>
+                <span class="fw-bold">click for my profile :></span>
             </a>
         </div>
     </div>
