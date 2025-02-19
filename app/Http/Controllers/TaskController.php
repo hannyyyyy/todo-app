@@ -38,14 +38,16 @@ class TaskController extends Controller
         return redirect()->back(); //digunakan untuk mengembalikan pengguna ke halaman sebelumnya setelah suatu proses (misalnya penyimpanan data, penghapusan, atau validasi form) selesai
     }
 
-    public function about() {
+    public function about() {  
+        // Membuat array data dengan kunci 'title' dan nilai 'About Me'
         $data = [
             'title' => 'About Me',
         ];
-
+    
+        // Mengembalikan tampilan 'pages.about' dan mengirimkan data ke view
         return view('pages.about', $data);
     }
-
+    
     public function complete($id) {
         // Mencari task berdasarkan ID, jika tidak ditemukan akan menghasilkan error 404
         // Lalu memperbarui status tugas menjadi selesai (is_completed = true)

@@ -192,7 +192,7 @@
                                                 </span>
                                             </div>
                                             <!-- Form untuk menghapus tugas -->
-                                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">  
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm p-0">
