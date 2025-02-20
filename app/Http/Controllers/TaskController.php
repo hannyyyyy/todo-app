@@ -97,7 +97,7 @@ class TaskController extends Controller
     }
     
     public function update(Request $request, Task $task)
-    {
+    { 
         // Validasi input untuk memastikan data yang dimasukkan valid
         $request->validate([
             'list_id' => 'required', // list_id harus ada dan valid
@@ -108,10 +108,10 @@ class TaskController extends Controller
     
         // Memperbarui task dengan data baru yang diberikan oleh pengguna
         Task::findOrFail($task->id)->update([
-            'list_id' => $request->list_id,
-            'name' => $request->name,
-            'description' => $request->description,
-            'priority' => $request->priority
+            'list_id' => $request->list_id, // Mengambil ID list dari request yang dikirim pengguna
+            'name' => $request->name, // Mengambil nama task dari input request
+            'description' => $request->description, // Mengambil deskripsi task dari input request
+            'priority' => $request->priority // Mengambil nilai prioritas task dari input request
         ]);
     
         // Mengembalikan pengguna ke halaman sebelumnya dengan pesan sukses
